@@ -315,3 +315,46 @@ body {
   filter: invert(26%) sepia(15%) saturate(638%) hue-rotate(7deg) brightness(92%)
     contrast(87%);
 }
+
+/** Price **/
+
+.price-list {
+  display: flex;
+  justify-content: space-between;
+
+  padding-top: 60px;
+  padding-bottom: 100px;
+}
+
+.price-item {
+  height: 505px;
+  width: 100%;
+  max-width: 450px;
+  padding: 51px 0 0 0;
+
+  border: 3px solid var(--gold-color);
+
+  text-align: center;
+}
+
+.price-item__title {
+  font-size: 1.4rem;
+  padding-bottom: 35px;
+}
+
+.price-item__sum {
+  padding-bottom: 18px;
+
+  font-family: Merriweather, serif;
+  color: var(--gold-color);
+  font-size: 1.2rem;
+  line-height: 48px;
+}
+
+.price-item__text-container {
+  padding-bottom: 40px;
+}
+
+.span--blok {
+  display: block;
+}
