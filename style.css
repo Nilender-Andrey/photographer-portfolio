@@ -264,10 +264,26 @@ body {
 
 /** Portfolio **/
 
-.portfolio-btn__wrap {
+.portfolio-section__btn-wrap {
   display: flex;
   justify-content: center;
   gap: 5px;
 
   padding: 60px 0;
 }
+
+.portfolio-section__images-wrap {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 25px;
+}
+
+.portfolio-section__image {
+  display: block;
+
+  flex: 1 1 450px;
+
+  height: 560px;
+}
+
+/** Video **/
