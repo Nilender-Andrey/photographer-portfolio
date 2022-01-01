@@ -20,6 +20,8 @@
   --black-color: #000;
   --white-color: #fff;
   --gold-color: #bdae82;
+
+  --max-width: 1440px;
 }
 
 /***********/
@@ -32,10 +34,11 @@
 
 html {
   font-size: 20px;
+  scroll-behavior: smooth;
 }
 
 body {
-  /*  background-color: var(--black-color); */
+  background-color: var(--black-color);
 
   font-family: Inter, sans-serif;
   color: var(--white-color);
@@ -45,7 +48,7 @@ body {
 
 .section {
   padding: 100px 20px 0 20px;
-  width: 1440px;
+  width: var(--max-width);
   margin: 0 auto;
 
   background-color: var(--black-color);
@@ -81,15 +84,27 @@ body {
 }
 
 .link {
+  display: block;
+
   text-decoration: none;
   color: var(--white-color);
+  transition: 0.3s;
 }
 
 .link:hover {
   color: var(--gold-color);
+  transition: 0.3s;
+}
+
+.link:active {
+  color: var(--gold-color);
+  transform: scale(0.98);
+  transition: 0.15s;
 }
 
 .button {
+  display: inline-block;
+
   width: 100%;
   max-width: 220px;
   height: 55px;
@@ -102,6 +117,8 @@ body {
   font-size: 20px;
 
   cursor: pointer;
+
+  transition: 0.3s;
 }
 
 .button--black {
@@ -112,6 +129,13 @@ body {
 
 .button:hover {
   color: var(--white-color);
+
+  transition: 0.3s;
+}
+
+.button:active {
+  transform: scale(0.97);
+  transition: 0.15s;
 }
 
 /** Header */
@@ -120,7 +144,7 @@ body {
   display: flex;
   align-items: center;
 
-  width: 1440px; /*max-width: 1440px;  */
+  width: var(--max-width); /*max-width: 1440px;  */
   margin: 0 auto;
 
   height: 90px;
@@ -139,9 +163,11 @@ body {
   transition: 0.3s;
 }
 
-.logo:hover {
+.header__logo:hover {
   filter: invert(26%) sepia(15%) saturate(638%) hue-rotate(7deg) brightness(92%)
     contrast(87%);
+
+  transition: 0.3s;
 }
 
 .header__nav {
@@ -160,32 +186,28 @@ body {
   list-style-type: none;
 }
 
-.header__langs-switcher {
-  text-align: right;
-  width: 70px;
+.langs-switcher__radio {
+  position: absolute;
+  z-index: -1;
+  opacity: 0;
 }
 
-.langs-switcher__separator {
-  margin: 0 4px;
-}
-
-.langs-switcher__button {
-  background-color: transparent;
-  border: none;
-  outline: none;
-  padding: 0;
-
-  text-align: center;
-  color: var(--white-color);
-
+.langs-switcher__label {
   cursor: pointer;
-
-  transition: 0.3s;
 }
 
-.langs-switcher__button--active {
+.langs-switcher__label:hover {
   color: var(--gold-color);
-  transition: 0.3s;
+  transition: 0.2s;
+}
+
+.langs-switcher__radio:checked + label {
+  color: var(--gold-color);
+  transition: 0.2s;
+}
+
+.langs-switcher__separator--margin {
+  margin: 0 4px;
 }
 
 /** Hero **/
@@ -361,6 +383,8 @@ body {
 
 .contacts-section {
   padding: 60px 20px 195px 20px;
+
+  background: url('./assets/img/contacts_bg.jpg') center center no-repeat;
 }
 
 .contacts-container {
@@ -372,6 +396,7 @@ body {
 .wrap-title__title--for-container {
   margin: 0rem;
   padding: 0;
+  background-color: transparent;
 }
 
 .form {
@@ -383,12 +408,13 @@ body {
 .form__textarea {
   width: 100%;
   padding: 12px 19px;
+  margin-bottom: 19px;
 
   border: 2px solid var(--gold-color);
-  background-color: var(--black-color);
+  background-color: rgba(0, 0, 0, 0.5);
   outline: none;
 
-  margin-bottom: 19px;
+  color: var(--white-color);
 }
 
 .form__input-email::placeholder,
@@ -399,9 +425,80 @@ body {
   font-size: 20px;
 }
 
+.form__input-email:focus,
+.form__input-tel:focus,
+.form__textarea:focus {
+  border: 2px solid var(--white-color);
+}
+
+/* .form__input-email {
+  -webkit-box-shadow: inset 0 0 0 50px rgba(0, 0, 0, 0.8);
+  -webkit-text-fill-color: var(--gold-color);
+} */
+
 .form__textarea {
   height: 100px;
   resize: none;
 
   margin-bottom: 25px;
+}
+
+/** Footer **/
+
+.footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  padding: 0 20px;
+
+  margin: 0 auto;
+  height: 150px;
+  width: var(--max-width);
+
+  background-color: var(--black-color);
+
+  font-size: 1rem;
+}
+
+.footer-info {
+  display: flex;
+  width: 168px;
+
+  justify-content: space-between;
+}
+
+.footer__school-link {
+  padding-left: 17px;
+}
+
+.footer__social {
+  display: flex;
+  gap: 20px;
+
+  width: 188px;
+
+  list-style-type: none;
+}
+
+.footer__social-link {
+  display: block;
+  width: 32px;
+  height: 32px;
+}
+
+.footer__social-icon {
+  width: 100%;
+  height: 100%;
+
+  fill: var(--white-color);
+}
+
+.footer__social-link:hover .footer__social-icon {
+  fill: var(--gold-color);
+}
+
+.footer__social-link:active .footer__social-icon {
+  transform: scale(0.96);
+  transition: 0.2s;
 }
