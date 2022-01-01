@@ -224,7 +224,7 @@ body {
 
 /** Skills **/
 
-.skills-wrap {
+.skills-list {
   display: flex;
   justify-content: space-between;
   flex-wrap: wrap;
@@ -287,3 +287,31 @@ body {
 }
 
 /** Video **/
+
+.video-player {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  padding-top: 60px;
+}
+.video-player__button {
+  position: absolute;
+
+  width: 130px;
+  height: 130px;
+
+  border-radius: 50%;
+
+  border: none;
+  outline: none;
+  background: url('./assets/svg/Play_Unvisited.svg') center center no-repeat;
+
+  cursor: pointer;
+}
+
+.video-player__button:hover {
+  filter: invert(26%) sepia(15%) saturate(638%) hue-rotate(7deg) brightness(92%)
+    contrast(87%);
+}
