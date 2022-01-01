@@ -127,8 +127,6 @@ body {
   padding: 0 20px 0 20px;
 
   background: url('./assets/img/bg.jpg') center 0 no-repeat;
-
-  font-size: 20px;
 }
 
 .header__logo {
@@ -357,4 +355,53 @@ body {
 
 .span--blok {
   display: block;
+}
+
+/** Contact **/
+
+.contacts-section {
+  padding: 60px 20px 195px 20px;
+}
+
+.contacts-container {
+  margin-left: auto;
+  width: 450px;
+  height: 445px;
+}
+
+.wrap-title__title--for-container {
+  margin: 0rem;
+  padding: 0;
+}
+
+.form {
+  padding: 40px 0;
+}
+
+.form__input-email,
+.form__input-tel,
+.form__textarea {
+  width: 100%;
+  padding: 12px 19px;
+
+  border: 2px solid var(--gold-color);
+  background-color: var(--black-color);
+  outline: none;
+
+  margin-bottom: 19px;
+}
+
+.form__input-email::placeholder,
+.form__input-tel::placeholder,
+.form__textarea::placeholder {
+  font-family: inherit;
+  color: #bdae82;
+  font-size: 20px;
+}
+
+.form__textarea {
+  height: 100px;
+  resize: none;
+
+  margin-bottom: 25px;
 }
