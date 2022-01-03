@@ -13,6 +13,11 @@
   src: url('./assets/fonts/Merriweather-Bold.ttf');
   font-weight: 700;
 }
+@font-face {
+  font-family: 'Merriweather';
+  src: url('./assets/fonts/Merriweather-Regular.ttf');
+  font-weight: 400;
+}
 
 /** Variables */
 
@@ -144,16 +149,13 @@ body {
     font-size: 32px;
   }
   .section {
-    padding: 10.3% 20px 0 20px;
+    padding: 80px 20px 0 20px;
   }
 }
 
-@media (max-width: 640px) {
-  .section {
-    padding: 10.3% 10px 0 10px;
-  }
+@media (max-width: 480px) {
   .wrap-title {
-    width: 70%;
+    width: 80%;
   }
 }
 
@@ -170,7 +172,7 @@ body {
   height: 90px;
   padding: 0 20px 0 20px;
 
-  background: url('./assets/img/bg.jpg') center 0/100% no-repeat;
+  background: url('./assets/img/bg.jpg') center 0 /* /100% */ no-repeat;
 }
 
 .header__logo {
@@ -257,19 +259,20 @@ body {
 /** Hero **/
 
 .hero-section {
-  padding: 186px 80px 0;
+  padding: 186px 80px 330px;
   width: 100%;
   max-width: var(--max-width);
   height: 820px;
   margin: 0 auto;
 
-  background: url('./assets/img/bg.jpg') center -90px/100% no-repeat;
+  background: url('./assets/img/bg.jpg') center -90px /* /100% */ no-repeat;
 }
 
 .hero-section__title {
   margin: 0;
   padding-bottom: 36px;
   font-size: 3rem;
+  font-weight: 700;
 }
 
 .hero-section__title--margin {
@@ -296,8 +299,10 @@ body {
   }
 
   .hero-section__title {
-    font-size: 1.6rem;
     padding-bottom: 32px;
+
+    font-size: 1.6rem;
+    font-weight: 400;
   }
   .hero-section__text {
     line-height: 24.2px;
@@ -367,7 +372,7 @@ body {
 
 @media (max-width: 768px) {
   .skills-list {
-    padding-top: 45px;
+    padding: 45px 0 40px 0;
   }
 
   .skills-item {
@@ -380,12 +385,6 @@ body {
     padding-top: 28px;
     line-height: 21.78px;
   }
-}
-
-@media (max-width: 640px) {
-}
-
-@media (max-width: 480px) {
 }
 
 /** Portfolio **/
@@ -408,10 +407,16 @@ body {
 .portfolio-section__image {
   display: block;
 
-  flex: 0 1 450px;
-  /* max-width: 450px; */
+  width: 100%;
+  max-width: 450px;
 
-  height: 560px;
+  max-height: 560px;
+}
+
+@media (max-width: 768px) {
+  .portfolio-section__btn-wrap {
+    padding: 50px 40px 60px;
+  }
 }
 
 /** Video **/
@@ -458,6 +463,32 @@ body {
     contrast(87%);
 }
 
+@media (max-width: 768px) {
+  /*  .video-section {
+    padding: 80px 0 0 0;
+  }
+  .video-section__title {
+    width: 100%;
+    max-width: 364px;
+  } */
+
+  .video-player {
+    left: -20px;
+    padding-top: 50px;
+    width: calc(100% + 40px);
+  }
+  .video-player__video-img--1440 {
+    display: none;
+  }
+  .video-player__video-img--768 {
+    display: block;
+  }
+  .video-player__button {
+    height: 65px;
+    width: 65px;
+  }
+}
+
 /** Price **/
 
 .price-list {
@@ -499,6 +530,14 @@ body {
 
 .span--blok {
   display: block;
+}
+
+@media (max-width: 768px) {
+  .price-list {
+    padding-top: 50px;
+    gap: 50px;
+    padding-bottom: 80px;
+  }
 }
 
 /** Contact **/
@@ -565,6 +604,26 @@ body {
   margin-bottom: 25px;
 }
 
+@media (max-width: 768px) {
+  .contacts-section {
+    padding: 52px 20px 105px 20px;
+
+    background: url('./assets/img/contacts_768.jpg') center center no-repeat;
+  }
+  .contacts-container {
+    width: 100%;
+    max-width: 450px;
+    margin: 0 auto;
+  }
+  .wrap-title__title--for-container {
+    margin: 0 auto;
+  }
+  .form {
+    padding: 32px 0;
+    text-align: center;
+  }
+}
+
 /** Footer **/
 
 .footer {
@@ -623,4 +682,38 @@ body {
 .footer__social-link:active .footer__social-icon {
   transform: scale(0.96);
   transition: 0.2s;
+}
+
+@media (max-width: 768px) {
+  .footer {
+    justify-content: flex-start;
+    height: 190px;
+    flex-direction: column;
+    padding-top: 27px;
+  }
+
+  .footer-info {
+    padding-bottom: 16px;
+  }
+  .footer__school-link {
+    padding: 0 0 30px 0;
+  }
+}
+
+@media (max-width: 1024px) {
+  .skills-list {
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 36px;
+  }
+
+  .price-list,
+  .portfolio-section__btn-wrap {
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+
+  .price-item {
+    max-width: 420px;
+  }
 }
