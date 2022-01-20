@@ -26,6 +26,18 @@
   --white-color: #fff;
   --gold-color: #bdae82;
 
+  --btn1-background-color: #bdae82;
+  --btn1-text-color: #000;
+  --btn1-hover-text-color: #fff;
+
+  --btn2-border-color: #bdae82;
+  --btn2-background-color: #000;
+  --btn2-text-color: #bdae82;
+  --btn2-hover-text-color: #fff;
+
+  --btn2active-background-color: #bdae82;
+  --btn2active-text-color: #000;
+
   --max-width: 1440px;
 }
 
@@ -62,8 +74,6 @@ body {
   margin: 0 auto;
   width: 100%;
   max-width: var(--max-width);
-
-  background-color: var(--black-color);
 }
 
 .text {
@@ -79,8 +89,6 @@ body {
 .wrap-title {
   margin: 0 auto;
   width: 50%;
-
-  background: url('./assets/svg/section-title-line.svg') center center no-repeat;
 }
 
 .wrap-title__title {
@@ -88,11 +96,8 @@ body {
   margin: 0 auto;
   padding: 0 20px;
 
-  background-color: var(--black-color);
-
   font-size: 40px;
   line-height: 80px;
-  color: var(--gold-color);
 }
 
 .link {
@@ -123,9 +128,7 @@ body {
 
   border: none;
   outline: none;
-  background-color: var(--gold-color);
 
-  color: var(--black-color);
   font-size: 20px;
 
   cursor: pointer;
@@ -133,21 +136,34 @@ body {
   transition: 0.3s;
 }
 
-.button--black {
-  border: 1px solid var(--gold-color);
-  background-color: var(--black-color);
-  color: var(--gold-color);
-}
-
-.button:hover {
-  color: var(--white-color);
-
-  transition: 0.3s;
-}
-
 .button:active {
   transform: scale(0.97);
   transition: 0.15s;
+}
+.button:hover {
+  transition: 0.3s;
+}
+
+.button-var1 {
+  background-color: var(--btn1-background-color);
+  color: var(--btn1-text-color);
+}
+
+.button-var1:hover {
+  color: var(--btn1-hover-text-color);
+}
+
+.button-var2 {
+  border: 1px solid var(--btn2-border-color);
+  background-color: var(--btn2-background-color);
+  color: var(--btn2-text-color);
+}
+.button-var2:hover {
+  color: var(--btn2-hover-text-color);
+}
+.button-var2--active {
+  background-color: var(--btn2active-background-color);
+  color: var(--btn2active-text-color);
 }
 
 @media (max-width: 768px) {
@@ -166,6 +182,38 @@ body {
   .wrap-title {
     width: 80%;
   }
+}
+
+/** Dark theme */
+.section--theme--dark {
+  background-color: var(--black-color);
+  color: var(--white-color);
+}
+
+.wrap-title--theme--dark {
+  background: url('./assets/svg/section-title-line_golden.svg') center center
+    no-repeat;
+}
+
+.wrap-title__title--theme--dark {
+  background-color: var(--black-color);
+  color: var(--gold-color);
+}
+
+/** Light theme */
+.section--theme--light {
+  background-color: var(--white-color);
+  color: var(--black-color);
+}
+
+.wrap-title--theme--light {
+  background: url('./assets/svg/section-title-line_black.svg') center center
+    no-repeat;
+}
+
+.wrap-title__title--theme--light {
+  color: var(--black-color);
+  background-color: var(--white-color);
 }
 
 /** Header */
@@ -239,6 +287,39 @@ body {
 
 .langs-switcher__separator--margin {
   margin: 0 4px;
+}
+
+.header__design-change-btn {
+  width: 45px;
+  height: 45px;
+  margin-left: 28px;
+
+  border: none;
+
+  background: url('./assets/svg/carbon_sun.svg') center no-repeat;
+
+  transition: 0.3s;
+}
+
+.header__design-change-btn--light {
+  background: url('./assets/svg/light.svg') center no-repeat;
+}
+.header__design-change-btn--dark {
+  background: url('./assets/svg/dark.svg') center no-repeat;
+}
+
+.header__design-change-btn:hover {
+  filter: invert(26%) sepia(15%) saturate(638%) hue-rotate(7deg) brightness(92%)
+    contrast(87%);
+
+  transition: 0.3s;
+
+  cursor: pointer;
+}
+
+.header__design-change-btn:active {
+  transform: scale(0.9);
+  transition: 0.3s;
 }
 
 /*** Burger **************************/
@@ -395,12 +476,21 @@ body {
   .langs-switcher__separator--margin {
     margin: 0px 9px;
   }
+
+  .header__design-change-btn {
+    margin-left: 0px;
+    margin-right: 32px;
+  }
 }
 
 @media (max-width: 480px) {
   .header {
     padding: 0 10px 0 10px;
     background: url('./assets/img/bg_768.jpg') 80% 0 no-repeat;
+  }
+
+  .header__design-change-btn {
+    margin-right: 15px;
   }
 }
 
@@ -698,6 +788,7 @@ body {
   margin: 0rem;
   padding: 0;
   background-color: transparent;
+  color: var(--gold-color);
 }
 
 .form {

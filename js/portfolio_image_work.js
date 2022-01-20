@@ -37,8 +37,8 @@ function changeActiveButton(element) {
 
   buttons.forEach((item) =>
     item === element
-      ? item.classList.remove('button--black')
-      : item.classList.add('button--black'),
+      ? item.classList.add('button-var2--active')
+      : item.classList.remove('button-var2--active'),
   );
 }
 
