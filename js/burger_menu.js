@@ -2,6 +2,7 @@
 
 const burger = document.querySelector('.burger-btn');
 const burgerNav = document.querySelector('.burger-nav');
+const body = document.body;
 
 burger.addEventListener('click', burgerHandlerClick);
 burgerNav.addEventListener('click', burgerNavHandlerClick);
@@ -9,9 +10,13 @@ burgerNav.addEventListener('click', burgerNavHandlerClick);
 function burgerHandlerClick() {
   burger.classList.toggle('burger-btn--open');
 
-  burger.classList.contains('burger-btn--open')
-    ? burgerNav.classList.remove('burger-nav--hidden')
-    : burgerNav.classList.add('burger-nav--hidden');
+  if (burger.classList.contains('burger-btn--open')) {
+    burgerNav.classList.remove('burger-nav--hidden');
+    body.style.position = 'fixed';
+  } else {
+    burgerNav.classList.add('burger-nav--hidden');
+    body.style.position = 'relative';
+  }
 }
 
 function burgerNavHandlerClick(e) {

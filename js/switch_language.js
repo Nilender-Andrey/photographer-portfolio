@@ -7,12 +7,15 @@ headerLangsSwitcher.addEventListener('change', change);
 function change() {
   const switchButtons = document.querySelectorAll('input[name=langs]');
 
-  switchButtons.forEach(
-    (item) => item.checked === true && switchLanguage(item.value),
-  );
+  switchButtons.forEach((item) => {
+    if (item.checked === true) {
+      localStorage.lang = item.value;
+      switchLanguage(item.value);
+    }
+  });
 }
 
-function switchLanguage(language = 'en') {
+export function switchLanguage(language = 'en') {
   const elementsI18 = document.querySelectorAll('[data-i18]');
 
   elementsI18.forEach(
