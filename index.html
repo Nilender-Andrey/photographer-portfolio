@@ -5,6 +5,7 @@
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="icon" href="assets/favicon.ico">
   <link rel="stylesheet" href="/assets/styles/normalize.css">
   <link rel="stylesheet" href="style.css">
   <title>portfolio</title>
@@ -45,11 +46,35 @@
       <label class="langs-switcher__label" for="ru"> ru </label>
     </div>
 
+    <div class="burger-btn">
+      <span class="burger-btn__first-span"></span>
+      <span class="burger-btn__second-span"></span>
+    </div>
+
+    <nav class="burger-nav burger-nav--hidden">
+      <ul class="burger-nav__list">
+        <li class="burger-nav__list-item">
+          <a class="burger-nav__link link" href="#skills">Skills</a>
+        </li>
+        <li class="burger-nav__list-item">
+          <a class="burger-nav__link link" href="#portfolio">Portfolio</a>
+        </li>
+        <li class="burger-nav__list-item">
+          <a class="burger-nav__link link" href="#video">Video</a>
+        </li>
+        <li class="burger-nav__list-item">
+          <a class="burger-nav__link link" href="#price">Price</a>
+        </li>
+        <li class="burger-nav__list-item">
+          <a class="burger-nav__link link" href="#contacts">Contacts</a>
+        </li>
+      </ul>
+    </nav>
+
   </header>
 
-
   <main>
-    <section class="hero-section section">
+    <section class="hero-section">
       <h1 class="hero-section__title title">Alexa Rise</h1>
       <p class="hero-section__text">Save sincere emotions, romantic feelings and happy moments of life together with
         professional photographer
@@ -61,7 +86,7 @@
 
     <section class="skills-section section" id="skills">
 
-      <div class="wrap-title">
+      <div class="wrap-title wrap-title--skills-section">
         <h2 class="title  wrap-title__title">Skills</h2>
       </div>
 
@@ -113,12 +138,15 @@
     </section>
 
     <section class="video-section section" id="video">
-      <div class="wrap-title">
+      <div class="wrap-title video-section__title">
         <h2 class="title  wrap-title__title">Video</h2>
       </div>
 
       <div class="video-player">
-        <img class="video-player__video-img" src="./assets/img/video-player.jpg" alt="">
+        <img class="video-player__video-img video-player__video-img--1440" src="./assets/img/video-player.jpg"
+          alt="video player">
+        <img class="video-player__video-img video-player__video-img--768" src="./assets/img/video-player_768.jpg"
+          alt="video player">
         <button class="video-player__button"></button>
       </div>
     </section>
