@@ -1,4 +1,4 @@
-import i18Obj from './translate.js';
+import { i18Obj, placeholderI18 } from './translate.js';
 
 const headerLangsSwitcher = document.querySelector('.header__langs-switcher');
 
@@ -17,8 +17,15 @@ function change() {
 
 export function switchLanguage(language = 'en') {
   const elementsI18 = document.querySelectorAll('[data-i18]');
+  const placeholder = document.querySelectorAll('[data-i18placeholder]');
 
   elementsI18.forEach(
     (item) => (item.textContent = i18Obj[language][item.dataset.i18]),
+  );
+
+  placeholder.forEach(
+    (item) =>
+      (item.placeholder =
+        placeholderI18[language][item.dataset.i18placeholder]),
   );
 }

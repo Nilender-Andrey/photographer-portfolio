@@ -44,6 +44,7 @@
 
   --btn2active-background-color: #bdae82;
   --btn2active-text-color: #000;
+  --btn2active-hover-text-color: #fff;
 
   --section-background-color: #000;
   --section-text-color: #fff;
@@ -72,10 +73,12 @@
   --btn2-border-color: #bdae82;
   --btn2-background-color: #000;
   --btn2-text-color: #000;
-  --btn2-hover-text-color: #bdae82;
+  --btn2-hover-text-color: #fff;
+  --btn2-hover-background-color: #bdae82;
 
   --btn2active-background-color: #bdae82;
-  --btn2active-text-color: #fff;
+  --btn2active-text-color: #000;
+  --btn2active-hover-text-color: #fff;
 
   --section-background-color: #fff;
   --section-text-color: #000;
@@ -263,6 +266,10 @@ body {
 .button-var2--active {
   background-color: var(--btn2active-background-color);
   color: var(--btn2active-text-color);
+}
+.button-var2--active:hover {
+  background-color: var(--btn2active-background-color);
+  color: var(--btn2active-hover-text-color);
 }
 
 @media (max-width: 768px) {
@@ -525,6 +532,10 @@ body {
   transition: 0.7s transform 0.2s;
   width: 57px;
   height: 57px;
+}
+.burger-btn.burger-btn--open:hover::after,
+.burger-btn.burger-btn--open:hover::before {
+  background-color: var(--gold-color);
 }
 
 /****************************************/

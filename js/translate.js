@@ -86,4 +86,18 @@ const i18Obj = {
     'send-message': 'Отправить',
   },
 };
-export default i18Obj;
+
+const placeholderI18 = {
+  en: {
+    email: 'E-mail',
+    phone: 'Phone',
+    message: 'Message',
+  },
+  ru: {
+    email: 'Электронная почта',
+    phone: 'Телефон',
+    message: 'Сообщение',
+  },
+};
+
+export { i18Obj, placeholderI18 };
