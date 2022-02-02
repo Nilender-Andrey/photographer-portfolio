@@ -10,13 +10,19 @@ const mainPlayBtn = videoPlayer.querySelector('.video-player__button');
 function togglePlay() {
   playBtn.classList.toggle('controls__play-btn--pause');
   mainPlayBtn.classList.toggle('video-player__button--none');
-  if (video.paused) {
+
+  const method = video.paused ? 'play' : 'pause';
+
+  mainPlayBtn.classList.add(`video-player__button--${method}`);
+
+  video[method]();
+  /* if (video.paused) {
     video.play();
     mainPlayBtn.classList.add('video-player__button--play');
   } else {
     video.pause();
     mainPlayBtn.classList.add('video-player__button--pause');
-  }
+  } */
   setTimeout(() => {
     mainPlayBtn.classList.remove('video-player__button--play');
     mainPlayBtn.classList.remove('video-player__button--pause');
@@ -50,16 +56,22 @@ function volume() {
 
 function stopVideo() {}
 function progressUpdate() {
-  console.log(video.duration);
-  console.log(video.currentTime);
-
   let duration = video.duration;
   let current = video.currentTime;
 
   progress.value = (100 * current) / duration;
 }
 
-function rewindVideo(params) {}
+function rewindVideo(event) {
+  const width = progress.offsetWidth;
+  const position = event.offsetX;
+  progress.value = (position * 100) / width;
+
+  video.pause();
+  video.currentTime = video.duration * (position / width);
+
+  video.play();
+}
 
 function control(e) {
   const event = e.target;
@@ -73,7 +85,7 @@ function control(e) {
       togglePlay();
       return;
     case progress:
-      progress;
+      rewindVideo(e);
       return;
 
     default:
