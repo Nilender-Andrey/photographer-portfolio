@@ -60,8 +60,8 @@ function volume() {
 }
 
 function progressUpdate() {
-  let duration = video.duration;
-  let current = video.currentTime;
+  const duration = video.duration;
+  const current = video.currentTime;
 
   progressInput.value = (100 * current) / duration;
 
@@ -96,7 +96,47 @@ function control(e) {
   }
 }
 
+/* timer */
+
+const timer = document.querySelector('.timer');
+const passed = timer.querySelector('.passed');
+const total = timer.querySelector('.total');
+
+function parseTime(value = 0) {
+  const hours = Math.trunc(value / 3600);
+  const min = Math.trunc((value % 3600) / 60);
+  const sec = Math.round(value - hours * 3600 - min * 60);
+
+  return { hours, min, sec };
+}
+
+function setValue(value) {
+  if (value) return value < 10 ? `0${value}` : `${value}`;
+  else return '00';
+}
+
+function totalTime() {
+  if (total.innerText != '00 : 00 : 00') return;
+  console.log('totalTime');
+  const duration = video.duration;
+  const { hours, min, sec } = parseTime(duration);
+  total.innerText = `${setValue(hours)} : ${setValue(min)} : ${setValue(sec)}`;
+}
+function passedTime() {
+  const current = video.currentTime;
+  const { hours, min, sec } = parseTime(current);
+  passed.innerText = `${setValue(hours)} : ${setValue(min)} : ${setValue(sec)}`;
+}
+
+function timeupdate() {
+  progressUpdate();
+  passedTime();
+  totalTime();
+}
+
+totalTime();
+
 volumeSlider.addEventListener('input', volume);
 videoPlayer.addEventListener('click', control);
-video.addEventListener('timeupdate', progressUpdate);
+video.addEventListener('timeupdate', timeupdate);
 progressInput.addEventListener('input', rewindVideo);
