@@ -7,6 +7,7 @@
     <link rel="icon" href="assets/favicon.ico" />
     <link rel="stylesheet" href="/assets/styles/normalize.css" />
     <link rel="stylesheet" href="style.css" />
+    <link rel="stylesheet" href="video_player.css" />
     <title>portfolio</title>
   </head>
 
@@ -263,11 +264,15 @@
             ></button>
             <button class="controls-btn controls__stop-btn"></button>
 
-            <div class="controls__progress progress">
-              <progress class="progress__filled" max="100" value="0">
-                <span class="progress__bar"></span>
-              </progress>
-            </div>
+            <input
+              class="progress__input"
+              type="range"
+              name="progress"
+              min="0"
+              max="100"
+              step="0.1"
+              value="0"
+            />
 
             <button
               class="controls-btn controls__volume-btn controls__volume-btn--loud"

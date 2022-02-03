@@ -1,33 +1,34 @@
 const videoPlayer = document.querySelector('.video-player');
 const video = videoPlayer.querySelector('.video-player__player');
-const progress = videoPlayer.querySelector('.progress__filled');
+const progressInput = videoPlayer.querySelector('.progress__input');
 const playBtn = videoPlayer.querySelector('.controls__play-btn');
 const stopBtn = videoPlayer.querySelector('.controls__stop-btn');
 const volumeBtn = videoPlayer.querySelector('.controls__volume-btn');
 const volumeSlider = videoPlayer.querySelector('.controls__volume-slider');
 const mainPlayBtn = videoPlayer.querySelector('.video-player__button');
+let root = document.documentElement;
 
 function togglePlay() {
   playBtn.classList.toggle('controls__play-btn--pause');
-  mainPlayBtn.classList.toggle('video-player__button--none');
+  mainPlayBtn.classList.toggle('video-player__button--none'); //! remove
 
   const method = video.paused ? 'play' : 'pause';
-
   mainPlayBtn.classList.add(`video-player__button--${method}`);
 
   video[method]();
-  /* if (video.paused) {
-    video.play();
-    mainPlayBtn.classList.add('video-player__button--play');
-  } else {
-    video.pause();
-    mainPlayBtn.classList.add('video-player__button--pause');
-  } */
+
   setTimeout(() => {
     mainPlayBtn.classList.remove('video-player__button--play');
     mainPlayBtn.classList.remove('video-player__button--pause');
-    //mainPlayBtn.classList.add('video-player__button--none');
+    //!mainPlayBtn.classList.add('video-player__button--none');
   }, 750);
+}
+
+function stopVideo() {
+  video.currentTime = 0;
+  video.pause();
+  mainPlayBtn.classList.remove('video-player__button--none');
+  playBtn.classList.remove('controls__play-btn--pause');
 }
 
 function volumeOffOn() {
@@ -42,6 +43,10 @@ function volumeOffOn() {
 
 function volume() {
   video.volume = volumeSlider.value;
+  root.style.setProperty(
+    '--progress-bg-volume',
+    volumeSlider.value * 100 + '%',
+  );
   volumeBtn.classList.remove(volumeBtn.classList[2]);
   if (video.volume === 0) {
     volumeBtn.classList.add('controls__volume-btn--off');
@@ -54,23 +59,24 @@ function volume() {
   }
 }
 
-function stopVideo() {}
 function progressUpdate() {
   let duration = video.duration;
   let current = video.currentTime;
 
-  progress.value = (100 * current) / duration;
+  progressInput.value = (100 * current) / duration;
+
+  root.style.setProperty('--progress-bg-size', progressInput.value + '%');
 }
 
 function rewindVideo(event) {
-  const width = progress.offsetWidth;
-  const position = event.offsetX;
-  progress.value = (position * 100) / width;
+  const position = event.target.value;
+
+  const method = video.paused ? 'pause' : 'play';
 
   video.pause();
-  video.currentTime = video.duration * (position / width);
+  video.currentTime = (video.duration / 100) * position;
 
-  video.play();
+  video[method]();
 }
 
 function control(e) {
@@ -81,18 +87,16 @@ function control(e) {
       return;
     case mainPlayBtn:
     case playBtn:
-    case video:
+      //!  case video:
       togglePlay();
       return;
-    case progress:
-      rewindVideo(e);
+    case stopBtn:
+      stopVideo(e);
       return;
-
-    default:
-      break;
   }
 }
 
 volumeSlider.addEventListener('input', volume);
 videoPlayer.addEventListener('click', control);
 video.addEventListener('timeupdate', progressUpdate);
+progressInput.addEventListener('input', rewindVideo);
