@@ -140,3 +140,7 @@ volumeSlider.addEventListener('input', volume);
 videoPlayer.addEventListener('click', control);
 video.addEventListener('timeupdate', timeupdate);
 progressInput.addEventListener('input', rewindVideo);
+video.addEventListener('contextmenu', (event) => {
+  event.preventDefault();
+  event.stopPropagation();
+});
