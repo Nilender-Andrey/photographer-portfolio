@@ -1,5 +1,5 @@
 //* Image caching
-const folderPath = '../assets/img/seasons/';
+const folderPath = './assets/img/seasons/';
 const imageFolders = [
   { nameFolder: 'autumn/', fileCount: 6 },
   { nameFolder: 'spring/', fileCount: 6 },
